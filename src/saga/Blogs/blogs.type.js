@@ -1,0 +1,7 @@
+export const FETCH_REQUEST = 'FETCH_REQUEST';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const FETCH_FAILURE = 'FETCH_FAILURE';
+
+export const PATCH_REQUEST = 'PATCH_REQUEST';
+export const PATCH_SUCCESS = 'PATCH_SUCCESS';
+export const PATCH_FAILURE = 'PATCH_FAILURE';
