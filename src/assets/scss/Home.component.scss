@@ -20,6 +20,7 @@ input {
 
     .media-body {
       width: 100%;
+      padding-left: 15px;
       display: flex;
       width: 100%;
       flex-direction: column;
@@ -38,6 +39,7 @@ input {
     .img {
       height: 100px;
       width: 100px;
+      border: 1px solid #e3e1e1;
     }
   }
 }

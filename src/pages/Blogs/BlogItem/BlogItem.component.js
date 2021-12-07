@@ -14,7 +14,7 @@ const BlogItem = ({ blog, setModal, onDelete }) => {
 
   return (
     <li key={blog?.id || ''} className="media">
-      <img src={NoImage ? NoImage : blog?.image} className="img mr-3" alt={`blog-img-${blog?.id || ''}`} />
+      <img src={blog?.image ? blog?.image : NoImage} className="img mr-3" alt={`blog-img-${blog?.id || ''}`} />
       <div className="media-body">
         <div>
           <h5 className="mt-0 mb-1">{blog?.title || ''}</h5>

@@ -12,7 +12,7 @@ import blogHook from './blog.hook';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().max(50, 'Title max length 50 characters').required('Title is required'),
-  content: Yup.string().max(200, 'Content max length 50 characters').required('Content is required'),
+  content: Yup.string().max(200, 'Content max length 200 characters').required('Content is required'),
 });
 
 const Blog = ({ modalData, setModal, state }) => {
@@ -23,6 +23,33 @@ const Blog = ({ modalData, setModal, state }) => {
 
   const { modal, type } = modalData;
 
+  const handleSubmitForm = async values => {
+    // if (previewImg.errorImage) {
+    //   return;
+    // }
+
+    try {
+      // const fd = new FormData();
+      // fd.append('title', values?.title || '');
+      // fd.append('content', values?.content || '');
+      // fd.append('image', previewImg?.file || '');
+
+      await dispatch(
+        patchRequest(
+          {
+            id: modal?.id || '',
+            title: values?.title || '',
+            content: values?.content || '',
+            image: values?.image || 'https://picsum.photos/200/300',
+          },
+          callbackSubmit,
+        ),
+      );
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <Modal className="blog-modal" size="xl" animation={true} show={!!type} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -32,39 +59,15 @@ const Blog = ({ modalData, setModal, state }) => {
         <Fieldset isFieldset={renderType()?.isEditForm}>
           <Formik
             initialValues={{
-              title: modal?.title || 'Minh nè',
-              content: modal?.content || 'Minh nè',
-              image: modal?.image || '',
+              title: modal?.title || '',
+              content: modal?.content || '',
+              image: modal?.image || 'https://picsum.photos/200/300',
             }}
             enableReinitialize={true}
             validationSchema={validationSchema}
             validateOnChange={false}
             validateOnBlur={false}
-            onSubmit={async values => {
-              // if (previewImg.errorImage) {
-              //   return;
-              // }
-
-              try {
-                // const fd = new FormData();
-                // fd.append('title', values?.title || '');
-                // fd.append('content', values?.content || '');
-                // fd.append('image', previewImg?.file || '');
-
-                await dispatch(
-                  patchRequest(
-                    {
-                      id: modal?.id || '',
-                      title: values?.title || '',
-                      content: values?.content || '',
-                    },
-                    callbackSubmit,
-                  ),
-                );
-              } catch (error) {
-                alert(error);
-              }
-            }}
+            onSubmit={handleSubmitForm}
           >
             {({ handleSubmit, handleBlur, handleChange, values, errors, submitCount }) => {
               return (
