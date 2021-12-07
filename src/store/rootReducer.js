@@ -4,7 +4,7 @@ import blogsReducer from '../saga/Blogs/blogs.reducer';
 
 const rootReducer = () =>
   combineReducers({
-    blogs: blogsReducer,
+    blogsReducer,
   });
 
 export default rootReducer;

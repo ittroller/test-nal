@@ -1,3 +1,15 @@
+button,
+input {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+  }
+}
 .list-unstyled {
   margin-top: 5px;
   .media {
@@ -17,7 +29,8 @@
         cursor: pointer;
       }
 
-      .btns-edit {
+      .btns-edit,
+      .btns-delete {
         margin-left: 15px;
       }
     }
@@ -31,18 +44,22 @@
 
 .wrap-sort {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 10px;
   .filter {
     display: flex;
-    max-width: 200px;
+    width: 300px;
 
     select {
-      &:last-child {
+      &:not(&:first-child) {
         margin-left: 20px;
       }
     }
   }
+}
+
+.wrap-search {
+  margin-top: 15px;
 }
 
 .blog-modal {
@@ -63,6 +80,7 @@
     object-fit: cover;
     height: 150px;
     width: 150px;
+    border: 1px solid #e3e1e1;
   }
 
   .error {

@@ -1,3 +1,4 @@
-import Header from './Header';
+import Header from './Header/Header';
+import Fieldset from './Fieldset/Fieldset';
 
-export { Header };
+export { Header, Fieldset };

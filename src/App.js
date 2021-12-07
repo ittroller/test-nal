@@ -1,5 +1,5 @@
-import BlogsComponent from './pages/Blogs.component';
+import BlogsContainer from './containers/Blogs.container';
 
-const App = () => <BlogsComponent />;
+const App = () => <BlogsContainer />;
 
 export default App;
