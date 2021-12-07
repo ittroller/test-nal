@@ -1,13 +1,11 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-
 import { Modal, Button, Form } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { Fieldset } from '../../components';
-
 import { patchRequest } from '../../saga/Blogs/blogs.action';
-
 import blogHook from './blog.hook';
 
 const validationSchema = Yup.object().shape({
