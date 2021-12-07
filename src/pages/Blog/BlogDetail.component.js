@@ -68,7 +68,6 @@ const Blog = ({ modalData, setModal, state }) => {
             onSubmit={handleSubmitForm}
           >
             {({ handleSubmit, handleBlur, handleChange, values, errors, submitCount }) => {
-              console.log(error?.statusText);
               return (
                 <form onSubmit={handleSubmit}>
                   <Form.Group>
