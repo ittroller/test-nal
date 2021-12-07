@@ -1,4 +1,3 @@
-// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchRequest, deleteRequest } from '../saga/Blogs/blogs.action';
@@ -12,6 +11,5 @@ const mapDispatchToProps = dispatch => {
     onDelete: params => dispatch(deleteRequest(params)),
   };
 };
-// const mapDispatchToProps = dispatch => ({ dispatch, ...bindActionCreators({ onFetch: fetchRequest }, dispatch) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogsComponent);
