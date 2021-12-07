@@ -31,14 +31,14 @@ const Blog = ({ modalData, setModal, state }) => {
       // fd.append('title', values?.title || '');
       // fd.append('content', values?.content || '');
       // fd.append('image', previewImg?.file || '');
-
+      const randomIdImage = Math.floor(Math.random() * 100);
       await dispatch(
         patchRequest(
           {
             id: modal?.id || '',
             title: values?.title || '',
             content: values?.content || '',
-            image: values?.image || 'https://picsum.photos/200/300',
+            image: values?.image || `https://picsum.photos/id/${randomIdImage}/200/300`,
           },
           callbackSubmit,
         ),
@@ -68,6 +68,7 @@ const Blog = ({ modalData, setModal, state }) => {
             onSubmit={handleSubmitForm}
           >
             {({ handleSubmit, handleBlur, handleChange, values, errors, submitCount }) => {
+              console.log(error?.statusText);
               return (
                 <form onSubmit={handleSubmit}>
                   <Form.Group>
@@ -110,7 +111,7 @@ const Blog = ({ modalData, setModal, state }) => {
                     ''
                   )}
 
-                  {!!submitCount && error?.statusText && <div className="error mt-3">{error?.statusText}</div>}
+                  {!!submitCount && error?.statusText ? <div className="error mt-3">{error?.statusText}</div> : ''}
                   {/* <Form.Group className="mb-3">
                   <Form.Label>Images</Form.Label>
 
